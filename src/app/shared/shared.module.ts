@@ -5,6 +5,7 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { SelectComponent } from './components/select/select.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,12 +16,14 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     SharedRoutingModule
   ],
   exports: [
     HeaderComponent,
     SelectComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    FormsModule,
   ]
 })
 export class SharedModule { }
