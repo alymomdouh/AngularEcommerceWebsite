@@ -6,6 +6,8 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,9 +17,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ProductItemComponent
   ],
   imports: [
+    BrowserModule,
     CommonModule,
+    SharedModule,
+    RouterModule,
     UserProductRoutingModule,
-    SharedModule
   ]
 })
 export class UserProductModule { }

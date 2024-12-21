@@ -13,33 +13,48 @@ export class ProductListComponent implements OnInit {
   categories: string[] = [];
   loading: boolean = false;
   cartProducts: any[] = []
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {
+    debugger
+  }
 
   ngOnInit(): void {
+    debugger
     this.getProducts()
     this.getCategories()
   }
 
   getProducts() {
     this.loading = true
-    // this.productService.getAllProducts().subscribe((res: any) => {
-    //   this.products = res
-    //   this.loading = false
-    // }, (error: any) => {
-    //   this.loading = false
-    //   alert(error)
-    // })
+    this.productService.getAllProducts().subscribe({
+      next: (res: any) => {
+        this.products = res
+        this.loading = false
+      },
+      error: (error) => {
+        this.loading = false
+        alert(error)
+      },
+      complete: () => {
+
+      },
+    })
   }
 
   getCategories() {
     this.loading = true
-    // this.productService.getAllCategories().subscribe((res: any) => {
-    //   this.categories = res
-    //   this.loading = false
-    // }, (error: any) => {
-    //   this.loading = false
-    //   alert(error)
-    // })
+    this.productService.getAllCategories().subscribe({
+      next: (res: any) => {
+        this.categories = res
+        this.loading = false
+      },
+      error: (error: any) => {
+        this.loading = false
+        alert(error)
+      },
+      complete: () => {
+
+      },
+    })
   }
 
   filterCategory(event: any) {
@@ -49,10 +64,10 @@ export class ProductListComponent implements OnInit {
   }
   getProductsCategory(keyword: string) {
     this.loading = true
-    // this.productService.getProductsByCategory(keyword).subscribe((res: any) => {
-    //   this.loading = false
-    //   this.products = res
-    // })
+    this.productService.getProductsByCategory(keyword).subscribe((res: any) => {
+      this.loading = false
+      this.products = res
+    })
   }
 
   addToCart(event: any) {
